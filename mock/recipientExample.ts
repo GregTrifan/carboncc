@@ -14,6 +14,8 @@ export const mockData: RecipientUIData[] = [
 						token0: "0x11f98A36aCBD04cA3Aa3a149d402AFFbD5966fe7",
 						token1: "0xD838290e877E0188a4A44700463419ED96c16107",
 						lpBalance: "2500000000000000000",
+						token0Address: "",
+						token1Address: "",
 						token0Price: 1.5, // Price of token0 in USD
 						token1Price: 2.0, // Price of token1 in USD
 						token0Amount: 1000, // Amount of token0 held
@@ -37,6 +39,8 @@ export const mockData: RecipientUIData[] = [
 						token0: "0x11f98A36aCBD04cA3Aa3a149d402AFFbD5966fe7",
 						token1: "0xD838290e877E0188a4A44700463419ED96c16107",
 						lpBalance: "1000000000000000000",
+						token0Address: "",
+						token1Address: "",
 						token0Price: 1.5,
 						token1Price: 2.0,
 						token0Amount: 500,
@@ -48,6 +52,8 @@ export const mockData: RecipientUIData[] = [
 						token0: "0x11f98A36aCBD04cA3Aa3a149d402AFFbD5966fe7",
 						token1: "0x4F604735c1cF31399C6E711D5962b2B3E0225AD3",
 						lpBalance: "1000000000000000000",
+						token0Address: "",
+						token1Address: "",
 						token0Price: 1.8,
 						token1Price: 2.5,
 						token0Amount: 600,
@@ -59,6 +65,8 @@ export const mockData: RecipientUIData[] = [
 						token0: "0x11f98A36aCBD04cA3Aa3a149d402AFFbD5966fe7",
 						token1: "0xdDc330761761751e005333208889bfe36C6E6760",
 						lpBalance: "10000000000000000000",
+						token0Address: "",
+						token1Address: "",
 						token0Price: 2.0,
 						token1Price: 3.0,
 						token0Amount: 2000,
