@@ -20,7 +20,7 @@ export default async function Home() {
     const recipients = await fetchRecipients();
     return (
         <div className="min-h-screen bg-gradient-to-br from-green-400 via-green-500 to-green-700 p-6">
-            <h1 className="text-3xl font-bold text-center mb-8">Leaderboard</h1>
+
             <div className="space-y-4">
                 {recipients.map((recipient) => (
                     <RecipientDropdown totalValue={recipient.totalValue} key={recipient.recipientAddress} recipient={recipient as RecipientUIData} />
