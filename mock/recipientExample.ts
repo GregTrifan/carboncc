@@ -7,7 +7,7 @@ export const mockData: RecipientUIData[] = [
 			{
 				nftAddress: "0x93172b74e49cc61814d59506661259bdd98e914d",
 				name: "Blue FlaminGROWs",
-				totalNFTValue: 5000, // Total value of NFT + LP
+
 				ownedLPs: [
 					{
 						contractAddress: "0x7407c7fdcdf3f34ef317ad478c9bae252dc91859",
@@ -32,7 +32,7 @@ export const mockData: RecipientUIData[] = [
 			{
 				nftAddress: "0x2c8f62442641f5a17b8c014667fcb085471d47b6",
 				name: "Blue Butterfly",
-				totalNFTValue: 12000,
+
 				ownedLPs: [
 					{
 						contractAddress: "0x7407c7fdcdf3f34ef317ad478c9bae252dc91859",
