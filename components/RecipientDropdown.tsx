@@ -27,7 +27,13 @@ const RecipientDropdown: React.FC<RecipientDropdownProps> = ({
 			}, 0)
 		);
 	}, 0);
-
+    const totalOtherCCTokens = recipient.nfts.reduce((acc, nft) => {
+        return acc + nft.ownedLPs.reduce((lpAcc, lp: LPUIInfo) => {
+            if (lp.token0 === "NCT" || lp.token0 === "BCT" || lp.token0 === "MCO2" || lp.token0 === "CRISP-M") return lpAcc + lp.token0Amount;
+            if (lp.token1 === "NCT" || lp.token1 === "BCT" || lp.token1 === "MCO2" || lp.token1 === "CRISP-M") return lpAcc + lp.token1Amount;
+            return lpAcc;
+        }, 0);
+    }, 0);
 	const totalRECTokens = recipient.nfts.reduce((acc, nft) => {
 		return (
 			acc +
@@ -80,7 +86,7 @@ const RecipientDropdown: React.FC<RecipientDropdownProps> = ({
     <path d="M12 20l0 -10" />
 </svg>
 
-							<span>{formatNumber((totalCCCTokens).toFixed(2))} lbs of CO₂</span>
+							<span>{formatNumber(((totalCCCTokens * 1) + (totalOtherCCTokens * 2200)).toFixed(2))} lbs of CO₂</span>
 						</p>
 					)}
 					{totalRECTokens > 0 && (
