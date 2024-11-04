@@ -8,7 +8,7 @@ export async function fetchSalesData(): Promise<
 	(RecipientUIData & { totalBalance: number })[]
 > {
 	try {
-		const creators = JSON.parse(process.env.CREATORS || "[]");
+		const creators = JSON.parse(process.env.NEXT_PUBLIC_CREATORS || "[]");
 
 		if (!Array.isArray(creators) || creators.length === 0) {
 			throw new Error("No creators found in environment variables");
