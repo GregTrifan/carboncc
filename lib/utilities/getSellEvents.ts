@@ -7,7 +7,7 @@ export async function getSellEvents(address: string) {
 				method: "GET",
 				headers: {
 					accept: "application/json",
-					"x-api-key": process.env.OPENSEA_KEY ?? "",
+					"x-api-key": process.env.NEXT_PUBLIC_OPENSEA_KEY ?? "",
 				},
 			}
 		);
@@ -24,7 +24,7 @@ export async function getSellEvents(address: string) {
 					method: "GET",
 					headers: {
 						accept: "application/json",
-						"x-api-key": process.env.OPENSEA_KEY ?? "",
+						"x-api-key": process.env.NEXT_PUBLIC_OPENSEA_KEY ?? "",
 					},
 				}
 			);

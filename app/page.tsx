@@ -1,29 +1,15 @@
 import RecipientDropdown from "@/components/RecipientDropdown";
 import { RecipientUIData } from "@/interfaces/RecipientUIData";
-
-
-async function fetchRecipients(): Promise<(RecipientUIData & { totalValue: number })[]> {
-    try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/getOwners`);
-        if (!res.ok) {
-            throw new Error('Failed to fetch');
-        }
-
-        return res.json();
-    } catch (error) {
-        console.error("Error fetching recipients:", error);
-        return [];
-    }
-}
+import {fetchSalesData} from "@/lib/fetchSalesData";
 
 export default async function Home() {
-    const recipients = await fetchRecipients();
+    const recipients = await fetchSalesData();
     return (
         <div className="min-h-screen bg-gradient-to-br from-green-400 via-green-500 to-green-700 p-6">
 
             <div className="space-y-4">
                 {recipients.map((recipient) => (
-                    <RecipientDropdown totalValue={recipient.totalValue} key={recipient.recipientAddress} recipient={recipient as RecipientUIData} />
+                    <RecipientDropdown totalValue={recipient.totalBalance} key={recipient.recipientAddress} recipient={recipient as RecipientUIData} />
                 ))}
             </div>
         </div>

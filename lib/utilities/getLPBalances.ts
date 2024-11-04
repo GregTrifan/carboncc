@@ -2,7 +2,7 @@ import { LPUIInfo } from "@/interfaces/RecipientUIData";
 
 export async function getLPBalances(usrAddress: string) {
 	const ZAPPER_API_URL = "https://api.zapper.xyz/v2/balances/apps";
-	const ZAPPER_API_KEY = process.env.ZAPPER_KEY;
+	const ZAPPER_API_KEY = process.env.NEXT_PUBLIC_ZAPPER_KEY;
 
 	const headers = {
 		Authorization: `Basic ${Buffer.from(

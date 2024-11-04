@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@fontsource/raleway':
+        specifier: ^5.1.0
+        version: 5.1.0
       '@uniswap/sdk-core':
         specifier: ^3.0.1
         version: 3.0.1
@@ -202,6 +205,9 @@ packages:
   '@fastify/busboy@2.1.1':
     resolution: {integrity: sha512-vBZP4NlzfOlerQTnba4aqZoMhE/a9HY7HRqoOPaETQcSQuWEIyZMHGfVu6w9wGtGK5fED5qRs2DteVCjOH60sA==}
     engines: {node: '>=14'}
+
+  '@fontsource/raleway@5.1.0':
+    resolution: {integrity: sha512-g97nQtuEMVlW95xKCZuDun4gSxmBOxf+7yfValqOwATvJL/98RkCacEsBgJlFNtWxO0+FkmoMl3b9kvZpyQ6VA==}
 
   '@humanwhocodes/config-array@0.13.0':
     resolution: {integrity: sha512-DZLEEqFWQFiyK6h5YIeynKx7JlvCYWL0cImfSRXZ9l4Sg2efkFGTuFf6vzXjK1cq6IYkU+Eg/JizXw+TD2vRNw==}
@@ -1258,6 +1264,7 @@ packages:
 
   ethereumjs-abi@0.6.8:
     resolution: {integrity: sha512-Tx0r/iXI6r+lRsdvkFDlut0N08jWMnKRZ6Gkq+Nmw75lZe4e6o3EkSnkaBP5NF6+m5PTGAr9JP43N3LyeoglsA==}
+    deprecated: This library has been deprecated and usage is discouraged.
 
   ethereumjs-util@6.2.1:
     resolution: {integrity: sha512-W2Ktez4L01Vexijrm5EB6w7dg4n/TgpoYU4avuT5T3Vmnw/eCRtiBrJfQYS/DCSvDIOLn2k57GcHdeBcgVxAqw==}
@@ -2912,6 +2919,8 @@ snapshots:
       '@ethersproject/strings': 5.7.0
 
   '@fastify/busboy@2.1.1': {}
+
+  '@fontsource/raleway@5.1.0': {}
 
   '@humanwhocodes/config-array@0.13.0':
     dependencies:

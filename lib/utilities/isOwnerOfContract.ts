@@ -1,4 +1,4 @@
-const RPC_KEY = process.env.RPC_KEY ?? "";
+const RPC_KEY = process.env.NEXT_PUBLIC_RPC_KEY ?? "";
 const BASE_URL = `https://polygon-mainnet.g.alchemy.com/nft/v3/${RPC_KEY}`;
 export async function isOwnerOfContract(
 	creatorAddress: string,
