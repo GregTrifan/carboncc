@@ -5,6 +5,7 @@ import LPTokensDropdown from "./LPTokensDropdown";
 import { ChevronDown } from "./icons/ChevronDown";
 import BlockiesSvg from "blockies-react-svg";
 import { shortenAddress } from "@/lib/utilities/shortenAddress";
+import { usePathname } from "next/navigation";
 
 interface RecipientDropdownProps {
 	recipient: RecipientUIData;
@@ -15,6 +16,7 @@ const RecipientDropdown: React.FC<RecipientDropdownProps> = ({
 	recipient,
 	totalValue,
 }) => {
+	const pathname = usePathname();
 	const [isOpen, setIsOpen] = useState(true);
 	const [isMetric, setIsMetric] = useState(false);
 
@@ -100,7 +102,7 @@ const RecipientDropdown: React.FC<RecipientDropdownProps> = ({
 							${totalValue?.toFixed(2)}
 						</p>
 					)}
-					<div className="flex flex-col-reverse sm:flex-row">
+					<div className="flex flex-col-reverse md:flex-row sm:flex-wrap">
 						{totalCCCTokens > 0 && (
 							<p className="text-xs sm:text-sm md:text-lg font-semibold text-yellow-100 ml-2 sm:ml-3 flex gap-1">
 								<svg
@@ -163,6 +165,30 @@ const RecipientDropdown: React.FC<RecipientDropdownProps> = ({
 								<span>
 									{formatNumber((totalRECTokens * 1000).toFixed(2))} KWh
 								</span>
+							</p>
+						)}
+						{pathname === "/preview" && (
+							<p className="text-xs md:text-sm font-semibold text-emerald-200 flex gap-1 ml-2 md:my-auto">
+								
+								<span>324.53 KG</span>
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="24"
+									height="24"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									strokeWidth="2"
+									strokeLinecap="round"
+									strokeLinejoin="round"
+									className="w-4 h-4 sm:w-5 sm:h-5"
+								>
+									<path d="M4 7h16" />
+									<path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
+									<path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
+									<path d="M10 12l4 4m0 -4l-4 4" />
+                                </svg>
+                                <span>removed</span>
 							</p>
 						)}
 					</div>
