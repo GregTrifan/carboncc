@@ -6,6 +6,7 @@ import { ChevronDown } from "./icons/ChevronDown";
 import BlockiesSvg from "blockies-react-svg";
 import { shortenAddress } from "@/lib/utilities/shortenAddress";
 import { usePathname } from "next/navigation";
+import { useMetric } from "@/contexts/MetricContext";
 
 interface RecipientDropdownProps {
 	recipient: RecipientUIData;
@@ -16,13 +17,9 @@ const RecipientDropdown: React.FC<RecipientDropdownProps> = ({
 	recipient,
 	totalValue,
 }) => {
+    const { isMetric } = useMetric();
 	const pathname = usePathname();
 	const [isOpen, setIsOpen] = useState(true);
-	const [isMetric, setIsMetric] = useState(false);
-
-	const toggleUnits = () => {
-		setIsMetric(!isMetric);
-	};
 	const toggleDropdown = () => setIsOpen(!isOpen);
 
 	const totalCCCTokens = recipient.nfts.reduce((acc, nft) => {
@@ -127,25 +124,7 @@ const RecipientDropdown: React.FC<RecipientDropdownProps> = ({
 										: `${formatNumber(co2AmountLbs.toFixed(2))} lbs`}{" "}
 									of CO₂
 								</span>
-								<button
-									onClick={() => toggleUnits()}
-									className="hover:bg-white/10 rounded-md sm:ml-1"
-								>
-									<svg
-										xmlns="http://www.w3.org/2000/svg"
-										fill="none"
-										viewBox="0 0 24 24"
-										strokeWidth={1.5}
-										stroke="currentColor"
-										className="h-4 w-4 sm:h-6 sm:w-6"
-									>
-										<path
-											strokeLinecap="round"
-											strokeLinejoin="round"
-											d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5"
-										/>
-									</svg>
-								</button>
+								
 							</p>
 						)}
 						{totalRECTokens > 0 && (
@@ -169,8 +148,6 @@ const RecipientDropdown: React.FC<RecipientDropdownProps> = ({
 						)}
 						{pathname === "/preview" && (
 							<p className="text-xs md:text-sm font-semibold text-emerald-200 flex gap-1 ml-2 md:my-auto">
-								
-								<span>324.53 KG</span>
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
 									width="24"
@@ -188,7 +165,8 @@ const RecipientDropdown: React.FC<RecipientDropdownProps> = ({
 									<path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
 									<path d="M10 12l4 4m0 -4l-4 4" />
                                 </svg>
-                                <span>removed</span>
+								<span>{isMetric?"324.53 kg":"715.46 lbs"} removed</span>
+								
 							</p>
 						)}
 					</div>
