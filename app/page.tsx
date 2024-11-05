@@ -26,7 +26,7 @@ export default function Home() {
     }, []);
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-green-400 via-green-500 to-green-700 p-6">
+        <div className="min-h-screen bg-gradient-to-br from-green-400 via-green-500 to-green-700 p-2 sm:p-4 md:p-6">
             {loading ? (
                 <div className="text-white text-xl">Loading recipients...</div>
             ) : error ? (

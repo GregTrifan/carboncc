@@ -5,6 +5,7 @@ import LPTokensDropdown from "./LPTokensDropdown";
 import { ChevronDown } from "./icons/ChevronDown";
 import BlockiesSvg from "blockies-react-svg";
 import { shortenAddress } from "@/lib/utilities/shortenAddress";
+
 interface RecipientDropdownProps {
 	recipient: RecipientUIData;
 	totalValue?: number;
@@ -17,6 +18,7 @@ const RecipientDropdown: React.FC<RecipientDropdownProps> = ({
 	const [isOpen, setIsOpen] = useState(true);
 
 	const toggleDropdown = () => setIsOpen(!isOpen);
+
 	const totalCCCTokens = recipient.nfts.reduce((acc, nft) => {
 		return (
 			acc +
@@ -27,13 +29,30 @@ const RecipientDropdown: React.FC<RecipientDropdownProps> = ({
 			}, 0)
 		);
 	}, 0);
-    const totalOtherCCTokens = recipient.nfts.reduce((acc, nft) => {
-        return acc + nft.ownedLPs.reduce((lpAcc, lp: LPUIInfo) => {
-            if (lp.token0 === "NCT" || lp.token0 === "BCT" || lp.token0 === "MCO2" || lp.token0 === "CRISP-M") return lpAcc + lp.token0Amount;
-            if (lp.token1 === "NCT" || lp.token1 === "BCT" || lp.token1 === "MCO2" || lp.token1 === "CRISP-M") return lpAcc + lp.token1Amount;
-            return lpAcc;
-        }, 0);
-    }, 0);
+
+	const totalOtherCCTokens = recipient.nfts.reduce((acc, nft) => {
+		return (
+			acc +
+			nft.ownedLPs.reduce((lpAcc, lp: LPUIInfo) => {
+				if (
+					lp.token0 === "NCT" ||
+					lp.token0 === "BCT" ||
+					lp.token0 === "MCO2" ||
+					lp.token0 === "CRISP-M"
+				)
+					return lpAcc + lp.token0Amount;
+				if (
+					lp.token1 === "NCT" ||
+					lp.token1 === "BCT" ||
+					lp.token1 === "MCO2" ||
+					lp.token1 === "CRISP-M"
+				)
+					return lpAcc + lp.token1Amount;
+				return lpAcc;
+			}, 0)
+		);
+	}, 0);
+
 	const totalRECTokens = recipient.nfts.reduce((acc, nft) => {
 		return (
 			acc +
@@ -46,6 +65,7 @@ const RecipientDropdown: React.FC<RecipientDropdownProps> = ({
 			}, 0)
 		);
 	}, 0);
+
 	const formatNumber = (value: number | string) =>
 		parseFloat(value as string).toLocaleString(undefined, {
 			minimumFractionDigits: 2,
@@ -58,44 +78,50 @@ const RecipientDropdown: React.FC<RecipientDropdownProps> = ({
 				<div className="flex justify-start items-center gap-2">
 					<BlockiesSvg
 						address={recipient.recipientAddress}
-						className="bg-black/25 border-white/70 border-4 rounded-full h-12 w-12"
+						className="sm:bg-black/25 border-white/70 sm:border-4 rounded-full h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12"
 					/>
-					<p className="uppercase font-black">
+					<p className="uppercase font-black text-sm sm:text-base md:text-lg">
 						{shortenAddress(recipient.recipientAddress)}
 					</p>
 					{totalValue && (
-						<p className="text-xl font-semibold text-emerald-100 ml-3">
+						<p className="text-sm sm:text-lg md:text-xl font-semibold text-emerald-100 ml-2 sm:ml-3">
 							${totalValue?.toFixed(2)}
 						</p>
 					)}
-					{totalCCCTokens > 0 && (
-                        <p className="text-lg font-semibold text-yellow-100 ml-3 flex gap-1">
-                            <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width={24}
-    height={24}
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth={2}
-    strokeLinecap="round"
-    strokeLinejoin="round"
->
-    <path d="M12 10a6 6 0 0 0 -6 -6h-3v2a6 6 0 0 0 6 6h3" />
-    <path d="M12 14a6 6 0 0 1 6 -6h3v1a6 6 0 0 1 -6 6h-3" />
-    <path d="M12 20l0 -10" />
-</svg>
-
-							<span>{formatNumber(((totalCCCTokens * 1) + (totalOtherCCTokens * 2200)).toFixed(2))} lbs of CO₂</span>
+                    <div className="flex flex-col-reverse sm:flex-row">
+                        {totalCCCTokens > 0 && (
+						<p className="text-xs sm:text-sm md:text-lg font-semibold text-yellow-100 ml-2 sm:ml-3 flex gap-1">
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								width={16}
+								height={16}
+								className="sm:w-6 sm:h-6"
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								strokeWidth={2}
+								strokeLinecap="round"
+								strokeLinejoin="round"
+							>
+								<path d="M12 10a6 6 0 0 0 -6 -6h-3v2a6 6 0 0 0 6 6h3" />
+								<path d="M12 14a6 6 0 0 1 6 -6h3v1a6 6 0 0 1 -6 6h-3" />
+								<path d="M12 20l0 -10" />
+							</svg>
+							<span>
+								{formatNumber(
+									(totalCCCTokens * 1 + totalOtherCCTokens * 2200).toFixed(2)
+								)}{" "}
+								lbs of CO₂
+							</span>
 						</p>
 					)}
 					{totalRECTokens > 0 && (
-						<p className="text-lg font-semibold text-blue-100 ml-3 flex gap-1">
+						<p className="text-xs sm:text-sm md:text-lg font-semibold text-blue-100 ml-2 sm:ml-3 flex gap-1">
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
 								viewBox="0 0 24 24"
 								fill="currentColor"
-								className="size-6"
+								className="w-4 h-4 sm:w-6 sm:h-6"
 							>
 								<path
 									fillRule="evenodd"
@@ -103,15 +129,13 @@ const RecipientDropdown: React.FC<RecipientDropdownProps> = ({
 									clipRule="evenodd"
 								/>
 							</svg>
-							<span>{formatNumber((totalRECTokens * 1000).toFixed(2))}</span>
-							KWh
+							<span>{formatNumber((totalRECTokens * 1000).toFixed(2))} KWh</span>
 						</p>
 					)}
+                    </div>
 				</div>
 				<button
-					className={`text-white hover:underline ${
-						isOpen ? "rotate-180" : ""
-					} transition-all`}
+					className={`text-white hover:underline ${isOpen ? "rotate-180" : ""} transition-all`}
 					onClick={toggleDropdown}
 				>
 					<ChevronDown />
@@ -119,7 +143,7 @@ const RecipientDropdown: React.FC<RecipientDropdownProps> = ({
 			</div>
 
 			{isOpen && (
-				<div className="mt-4 space-y-4">
+				<div className="mt-3 sm:mt-4 space-y-2 sm:space-y-4">
 					{recipient.nfts.map((nft) => (
 						<LPTokensDropdown key={nft.nftAddress} nft={nft} />
 					))}

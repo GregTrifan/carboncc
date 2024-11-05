@@ -84,30 +84,31 @@ const LPTokensDropdown: React.FC<LPTokensDropdownProps> = ({ nft }) => {
 			maximumFractionDigits: 2,
 		});
 	return (
-		<div className="border border-black/50 rounded-lg p-4 bg-black/20">
+		<div className="border border-black/50 rounded-lg p-2 sm:p-4 bg-black/20">
 			<div className="flex justify-between items-center">
 				<div className="flex items-center">
 					{nftImage && (
 						<img
-							src={nftImage}
-							alt={`${nft.name} image`}
-							className="h-24 w-24 rounded-md mr-4"
-						/>
+    src={nftImage}
+    alt={`${nft.name} image`}
+    className="h-16 w-16 md:h-24 md:w-24 rounded-md mr-4 object-cover"
+/>
 					)}
                     <div>
                         <div className="flex items-center">
-                            <p className="text-lg font-semibold my-auto">{nft.name}</p>
-					<p className="font-bold ml-2 text-xl text-emerald-200">
+                            <p className="text-sm sm:text-lg font-semibold my-auto">{nft.name}</p>
+					<p className="font-bold ml-2 text-lg sm:text-xl text-emerald-200">
 						${totalNftValue.toFixed(2)}
 					</p>
                         </div>
-                        <div className="flex items-center gap-3">
+                        <div className="flex items-center gap-1 sm:gap-3">
                             {totalCCC > 0 && (
-						<p className="text-lg font-semibold text-yellow-100 flex gap-1">
+						<p className="text-xs md:text-lg font-semibold text-yellow-100 flex gap-1">
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
-								width={24}
-								height={24}
+								width={16}
+								height={16}
+								className="sm:w-6 sm:h-6"
 								viewBox="0 0 24 24"
 								fill="none"
 								stroke="currentColor"
@@ -127,12 +128,12 @@ const LPTokensDropdown: React.FC<LPTokensDropdownProps> = ({ nft }) => {
 						</p>
 					)}
 					{totalREC > 0 && (
-						<p className="text-lg font-semibold text-blue-100 flex gap-1">
+						<p className="text-xs md:text-lg font-semibold text-blue-100 flex gap-1">
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
 								viewBox="0 0 24 24"
 								fill="currentColor"
-								className="size-6"
+								className="w-4 h-4 sm:w-6 sm:h-6"
 							>
 								<path
 									fillRule="evenodd"
